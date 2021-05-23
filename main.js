@@ -1,13 +1,14 @@
 const API_URL = "http://api.openweathermap.org/data/2.5/weather?"
 
+const body = document.body;
 const main = document.getElementById("main");
 const form = document.getElementById("form");
 const search = document.getElementById("search");
 
-getCity("Sydney");
+getCity("Hyderabad");
 
 async function getCity(cityName) {
-    console.log(`entered ${cityName}`)
+    // console.log(`entered ${cityName}`)
     const respose = await fetch(API_URL + `q=${cityName}&APPID=3a2c30a03141ae70c414676b0c7684b5`)
     const responseData = await respose.json();
 
@@ -27,6 +28,16 @@ function createCityCard(city) {
         <div>
     `;
     main.innerHTML = cardHTML;
+    if (temperature >= 30) {
+        body.style.background = "linear-gradient(90deg, rgba(255,177,0,1) 6%, rgba(255,0,0,0.9850490367045256) 74%)";
+        search.style.backgroundColor = "orange";
+        search.style.boxShadow = "0 5px 10px yellow";
+    }
+    if (temperature < 30) {
+        body.style.background = "linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 17%, rgba(0, 212, 255, 1) 100%)";
+        search.style.backgroundColor = "rgb(186, 215, 241)";
+        search.style.boxShadow = "0 5px 10px cadetblue";
+    }
 }
 
 form.addEventListener("submit", (e) => {

@@ -41,7 +41,7 @@ body {
     display: flexbox;
     align-content: center;
     justify-content: center;
-    background-color: rgb(192, 212, 218);
+    background-color: wheat;
     border-radius: 2rem;
 }
 
